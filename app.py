@@ -8,11 +8,16 @@ from datetime import datetime
 app = Flask(__name__)
 
 PLAYER_MAP = {
-    "38482907124032": "YF",
+    "38482907203152": "YF",
     "38482907326032": "Levi",
     "38482907259824": "Focus",
     "38482907077376": "Nina",
-    "38482907240208": "HoneyBee"
+    "38482907240208": "HoneyBee",
+    "38482907135216":"OzzieNinja",
+    "38482907334784": "KEI/Sonu",
+    "38482906974768": "NIK",
+    "38482907346800": "Fury",
+    "38482907153024": "SG[INV]",
 }
 
 access_token_cache = {
