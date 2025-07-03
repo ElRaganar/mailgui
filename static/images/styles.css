@@ -14,6 +14,7 @@ body {
 .table th, .table td {
   word-break: break-word;
   font-size: 0.9rem;
+  padding: 0.5rem;
 }
 
 .table-responsive.custom-scroll {
@@ -66,7 +67,34 @@ body {
     font-size: 0.85rem;
   }
 
-  .table th, .table td {
-    font-size: 0.75rem;
+  .mail-table thead {
+    display: none;
+  }
+
+  .mail-table tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.5rem;
+  }
+
+  .mail-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .mail-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    flex: 1;
+    padding-right: 0.5rem;
+    color: #ccc;
+  }
+
+  .mail-table td:last-child {
+    border-bottom: none;
   }
 }
