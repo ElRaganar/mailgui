@@ -1,0 +1,72 @@
+body {
+  background-color: #000 !important;
+}
+
+.title-text {
+  text-shadow: 2px 2px 4px #000;
+  font-size: 2rem;
+}
+
+.select-player {
+  font-size: 1rem;
+}
+
+.table th, .table td {
+  word-break: break-word;
+  font-size: 0.9rem;
+}
+
+.table-responsive.custom-scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 60vh;
+}
+
+.table-responsive.custom-scroll::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.table-responsive.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.table-responsive.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Dark mode for Bootstrap-Select dropdown */
+.bootstrap-select .dropdown-menu {
+  background-color: #222;
+  border: 1px solid #555;
+}
+
+.bootstrap-select .dropdown-item {
+  color: #fff;
+}
+
+.bootstrap-select .dropdown-item.active,
+.bootstrap-select .dropdown-item:active {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .title-text {
+    font-size: 1.4rem;
+  }
+
+  .select-player {
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+  }
+
+  .table th, .table td {
+    font-size: 0.75rem;
+  }
+}

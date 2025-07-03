@@ -5,151 +5,44 @@
   <title>MMO Mail Viewer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      color: #fff;
-      min-height: 100vh;
-      overflow-x: hidden;
-      font-family: sans-serif;
-    }
-
-    .watermark {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: 90vh;
-      width: auto;
-      max-width: 90vw;
-      opacity: 0.5;
-      z-index: 10;
-      pointer-events: none;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-      padding: 16px;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 16px;
-      text-shadow: 2px 2px 4px #000;
-      font-size: 1.8rem;
-    }
-
-    .form-inline {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-
-    .form-inline select,
-    .form-inline button {
-      min-width: 140px;
-    }
-
-    .mail-table-container {
-      overflow-x: auto;
-      max-height: 65vh;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      padding: 8px;
-      position: relative;
-    }
-
-    .mail-table-container::after {
-      content: 'Swipe →';
-      position: absolute;
-      bottom: 4px;
-      right: 8px;
-      font-size: 0.7rem;
-      color: #aaa;
-    }
-
-    table {
-      width: 100%;
-      background: rgba(30, 30, 30, 0.95);
-      color: #eee;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 0.4rem;
-      font-size: 0.85rem;
-      word-break: break-word;
-      vertical-align: top;
-    }
-
-    th {
-      background: rgba(50, 50, 50, 0.95);
-    }
-
-    @media (max-width: 500px) {
-      .header {
-        font-size: 1.5rem;
-      }
-
-      .form-inline {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .form-inline select,
-      .form-inline button {
-        width: 100%;
-      }
-
-      th, td {
-        font-size: 0.75rem;
-        padding: 0.3rem;
-      }
-
-      .mail-table-container {
-        max-height: 55vh;
-        padding: 5px;
-      }
-    }
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-dark text-light">
 
-  <!-- Watermark -->
-  <!-- <img src="{{ bg_url }}" alt="Watermark" class="watermark"> -->
+  <div class="container py-4">
+    <h1 class="text-center mb-3 title-text">March of Empires</h1>
 
-  <div class="content">
-    <h1 class="header">March OF Empire</h1>
-
-    <form method="POST" id="playerForm" class="form-inline">
+    <form method="POST" id="playerForm" class="row g-2 justify-content-center mb-3">
       <input type="hidden" name="refresh" id="refreshField" value="0">
-      <select name="player_id"
-              class="form-select"
-              required
-              onchange="document.getElementById('playerForm').submit();">
-        <option value="" disabled {% if not selected_player %}selected{% endif %}>Select a Player</option>
-        {% for pid, pname in players.items() %}
-        <option value="{{ pid }}" {% if selected_player == pid %}selected{% endif %}>{{ pname }}</option>
-        {% endfor %}
-      </select>
-      <button type="button" class="btn btn-secondary" onclick="refreshMails()">Refresh</button>
+
+      <div class="col-12 col-sm-8 col-md-4 col-lg-2">
+        <select name="player_id"
+                class="selectpicker form-select bg-dark text-light border-light shadow-sm w-100 select-player"
+                data-live-search="true"
+                data-style="btn-dark"
+                required
+                onchange="document.getElementById('playerForm').submit();">
+          <option value="" disabled {% if not selected_player %}selected{% endif %}>Select a Player</option>
+          {% for pid, pname in players.items() %}
+          <option value="{{ pid }}" {% if selected_player == pid %}selected{% endif %}>{{ pname }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="col-12 col-sm-auto d-flex justify-content-center">
+        <button type="button" class="btn btn-success shadow-sm" onclick="refreshMails()">Refresh</button>
+      </div>
     </form>
 
     {% if error %}
-    <div class="alert alert-danger">{{ error }}</div>
+    <div class="alert alert-danger text-center">{{ error }}</div>
     {% endif %}
 
     {% if mails %}
-    <div class="mail-table-container">
-      <table class="table table-striped table-sm">
-        <thead>
+    <div class="table-responsive custom-scroll bg-secondary bg-opacity-25 p-2 rounded">
+      <table class="table table-dark table-bordered table-hover table-sm align-middle mb-0">
+        <thead class="table-secondary text-light">
           <tr>
             <th>Sender Name</th>
             <th>Subject</th>
@@ -172,12 +65,18 @@
       </table>
     </div>
     {% else %}
-    <p class="text-center">Please select a player to view mail.</p>
+    <p class="text-center">Refresh For NewUpdate On Mail</p>
     {% endif %}
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
   <script>
+    $(document).ready(function() {
+      $('.selectpicker').selectpicker();
+    });
+
     function refreshMails() {
       document.getElementById('refreshField').value = '1';
       document.getElementById('playerForm').submit();
