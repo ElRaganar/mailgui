@@ -131,3 +131,13 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+
+
+
+# git remote add origin , these 3 step important when you want to push your code to github or connect it to repo
+# git branch -M main
+# git push -u origin main 
