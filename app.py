@@ -8,6 +8,8 @@ from datetime import datetime
 app = Flask(__name__)
 
 PLAYER_MAP = {
+    "38345468116144":"ENvy",
+    "38345468028736":"Puffy",
     "38482907203152": "YF[INV]",
     "38482907326032": "Levi",
     "38482907259824": "Focus",
@@ -28,7 +30,10 @@ PLAYER_MAP = {
     "38482907187904": "you@MARU[LOG]",
     "38482907292832": "SOUL[RIP]",
     "38482907245136": "OMEN[RIP]",
-    "38482907197536": "Demigure"
+    "38482907197536": "Demigure",
+    "38482907231104":"Ajay[N.O]",
+    "38482907009136":"KingKAZU[N.O]"
+    
 }
 
 access_token_cache = {
@@ -142,7 +147,7 @@ def index():
                            selected_player=selected_player)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)
 
 
 
@@ -150,6 +155,3 @@ if __name__ == '__main__':
 
 
 
-# git remote add origin , these 3 step important when you want to push your code to github or connect it to repo
-# git branch -M main
-# git push -u origin main 

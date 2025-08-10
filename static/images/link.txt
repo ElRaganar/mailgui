@@ -1,0 +1,29 @@
+git remote add origin , these 3 step important when you want to push your code to github or connect it to repo
+git branch -M main
+git push -u origin main 
+
+client_id: gah:1867:69703:9.1.0c:steam:steam
+username: 
+  anonymous:d2luMzJfc3RlYW1fNzY1NjExOTk4ODYwNjY2MTdfMTc1NDc5MTYzNl+7QNCVV0gWZHgAj6oceJHO
+password: MjgDcis9TuLwSRUW
+scope: storage message config leaderboard_ro social auth chat translation lobby
+device_id: '389714701901586724'
+for_credential_type: anonymous
+
+
+
+type: auth
+status: '1'
+timestamp: '2025-08-10 02:10:17'
+connectionstatus: LF_:ga.lgn.2501.pll.401
+domain: eur-gold-new
+client_id: gah:1867:69703:9.1.0c:steam:steam
+device_id: '389714701901586724
+
+
+access_token: 
+  540b4c58-758f-11f0-af7a-b8ca3a660720,auth,gah:1867:69703:9.1.0c:steam:steam,1754806289.936062,steam:76561199886066617,389714701901586724,eur~gold|8176a3611aab221b2a4f84df299a6fa6
+credential: 
+  anonymous:d2luMzJfc3RlYW1fNzY1NjExOTk4ODYwNjY2MTdfMTc1NDc5MTYzNl+7QNCVV0gWZHgAj6oceJHO
+password: MjgDcis9TuLwSRUW
+if_exists: relink
