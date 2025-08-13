@@ -71,13 +71,13 @@ def update_cached_access_token():
 
 def fetch_mail(player_id, token):
     encoded_token = urllib.parse.quote(token, safe='')
-    get_url = f"https://eur-osiris.gameloft.com/game_objects/sent_wall_{player_id}/wall?access_token={encoded_token}&language=json&limit=100&expiration=30"
+    get_url = f"https://eur-osiris.gameloft.com/game_objects/sent_wall_{player_id}/wall?access_token={encoded_token}&language=json&limit=1000&expiration=200"
     response = requests.get(get_url)
     if response.status_code == 401:
         # Token expired; refresh and retry
         token = update_cached_access_token()
         encoded_token = urllib.parse.quote(token, safe='')
-        get_url = f"https://eur-osiris.gameloft.com/game_objects/sent_wall_{player_id}/wall?access_token={encoded_token}&language=json&limit=100&expiration=30"
+        get_url = f"https://eur-osiris.gameloft.com/game_objects/sent_wall_{player_id}/wall?access_token={encoded_token}&language=json&limit=1000&expiration=200"
         response = requests.get(get_url)
     response.raise_for_status()
     return response.json()
@@ -149,6 +149,8 @@ def index():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000)
+    # app.run(debug=True)
+
 
 
 
